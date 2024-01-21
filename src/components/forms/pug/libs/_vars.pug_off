@@ -1,0 +1,131 @@
+block variables
+  -
+    var selectsValues = [
+      {
+        id: 'service',
+        name: 'service',
+        type: 'select',
+        maxcount: '4',
+        required: false,
+        valid: 'valid',
+        invalid: 'Услуга не выбрана, выберите услугу из выпадающего списка.',
+        labelValue: 'Выбранная услуга',
+        options: [
+          {
+            value: '',
+            text: 'Выберите услугу из списка',
+            selected: true,
+            disabled: false
+          },
+          {
+            value: 'Bussines',
+            text: 'Бизнес услуга',
+            selected: false,
+            disabled: false
+          },
+          {
+            value: 'Bussines',
+            text: 'Бизнес услуга',
+            selected: false,
+            disabled: false
+          },
+          {
+            value: 'Bussines',
+            text: 'Бизнес услуга',
+            selected: false,
+            disabled: false
+          },
+          {
+            value: 'Bussines',
+            text: 'Бизнес услуга',
+            selected: false,
+            disabled: false
+          },
+          {
+            value: 'Bussines',
+            text: 'Бизнес услуга',
+            selected: false,
+            disabled: false
+          },
+          {
+            value: 'Bussines',
+            text: 'Бизнес услуга',
+            selected: false,
+            disabled: false
+          },
+        ],
+      },
+      {
+        id: 'service2',
+        name: 'service2',
+        type: 'select',
+        maxcount: '4',
+        required: true,
+        valid: 'valid',
+        invalid: 'Услуга не выбрана, выберите услугу из выпадающего списка.',
+        labelValue: 'Выбранная услуга',
+        options: [ 
+          {
+            value: 'Bussines',
+            text: 'Бизнес услуга',
+            selected: true,
+            disabled: false
+          },
+          {
+            value: 'Bussines',
+            text: 'Бизнес услуга',
+            selected: false,
+            disabled: false
+          },
+          {
+            value: 'Bussines',
+            text: 'Бизнес услуга',
+            selected: false,
+            disabled: false
+          },
+          {
+            value: 'Bussines',
+            text: 'Бизнес услуга',
+            selected: false,
+            disabled: false
+          },
+        ],
+      },
+      {
+        id: 'service3',
+        name: 'service3',
+        type: 'select',
+        maxcount: '6',
+        required: true,
+        valid: 'valid',
+        invalid: 'Услуга не выбрана, выберите услугу из выпадающего списка.',
+        labelValue: 'Выбранная услуга',
+        options: [ 
+          {
+            value: '',
+            text: 'Выберите услугу из списка',
+            selected: true,
+            disabled: true,
+          },
+          {
+            value: 'Bussines',
+            text: 'Бизнес услуга',
+            selected: false,
+            disabled: false
+          },
+          {
+            value: 'Bussines',
+            text: 'Бизнес услуга',
+            selected: false,
+            disabled: false
+          },
+          {
+            value: 'Bussines',
+            text: 'Бизнес услуга',
+            selected: false,
+            disabled: false
+          },
+          
+        ],
+      },
+    ]

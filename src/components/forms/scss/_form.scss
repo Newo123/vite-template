@@ -1,0 +1,282 @@
+.form {
+  &_loading {
+    @apply pointer-events-none select-none opacity-50;
+  }
+  &_error,
+  &_success {
+    & .form__header,
+    & .form__body,
+    & .form__footer {
+      @apply pointer-events-none invisible fixed select-none overflow-hidden opacity-0;
+    }
+
+    & .form__response {
+      @apply block h-full;
+    }
+  }
+  &_error {
+    & .form__response {
+      &-error {
+        @apply flex h-full flex-col items-center justify-center;
+      }
+    }
+  }
+
+  &_success {
+    & .form__response {
+      &-success {
+        @apply flex h-full flex-col items-center justify-center;
+      }
+    }
+  }
+  // Шапка формы
+
+  &__header {
+    // @apply mb-22 flex flex-col gap-6;
+    @apply mb-22;
+  }
+
+  &__title {
+    @apply text-4xl font-medium;
+  }
+
+  &__description {
+    @apply text-lg font-normal mt-6;
+  }
+
+  // Тело формы
+
+  &__body {
+    // @apply flex flex-col gap-14;
+  }
+
+  &__row {
+    @apply mt-13 flex;
+
+    &:first-child {
+      @apply mt-0;
+    }
+  }
+
+  &__control-label {
+    @apply absolute left-8 -translate-y-1/2 rounded-lg bg-white px-3 text-sm font-bold transition-colors duration-200 ease-in-out;
+  }
+
+  & .choices {
+    @apply before:absolute before:right-10 before:top-[50%] before:h-5 before:w-5 before:translate-y-[-50%] before:-rotate-45 before:border-0 before:border-b before:border-l before:border-black before:content-[''] after:hidden;
+
+    &.is-focused {
+      & .form__control {
+        @apply border-black;
+      }
+      & ~ .form__control-label {
+        color: $input-focus-label-color;
+      }
+    }
+    &.is-open {
+      @apply before:rotate-[135deg];
+      & .form__control {
+        @apply rounded-b-none border-black;
+        & ~ .form__select-list.choices__list--dropdown {
+          @apply rounded-b-md;
+        }
+      }
+      & ~ .form__control-label {
+        color: $input-focus-label-color;
+      }
+
+      &.is-flipped {
+        & .form__select-list.choices__list--dropdown {
+          @apply rounded-b-none rounded-t-md;
+        }
+        & .form__control {
+          @apply rounded-b-md rounded-t-none;
+        }
+        & ~ .form__control-label {
+          @apply hidden;
+        }
+      }
+    }
+  }
+
+  &__control {
+    @apply rounded-md border-none p-8 text-base font-semibold shadow-none outline-none transition-colors duration-200 ease-in-out;
+    border: 0.0625em solid $input-border-color;
+
+    &-radio,
+    &-checkbox {
+      @apply absolute overflow-hidden opacity-0;
+
+      &:checked ~ .form__control-label {
+        &::before {
+          @apply bg-blue-600;
+          background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3e%3cpath fill='none' stroke='%23fff' stroke-linecap='round' stroke-linejoin='round' stroke-width='3' d='m6 10 3 3 6-6'/%3e%3c/svg%3e");
+        }
+      }
+      &:focus ~ .form__control-label {
+        &::before {
+          @apply border-black;
+        }
+      }
+
+      & ~ .form__control-label {
+        @apply static translate-y-0 rounded-none bg-transparent p-0;
+      }
+    }
+
+    &:focus:not([type='checkbox'], [type='radio']) {
+      @apply border-black ring-0;
+
+      & .form__select {
+        @apply border-black;
+      }
+
+      & ~ .form__control-label {
+        color: $input-focus-label-color;
+      }
+    }
+    &::placeholder {
+      @apply font-normal text-gray-500;
+    }
+  }
+
+  &__control-box {
+    @apply relative flex w-full flex-col gap-2;
+
+    &:has(.form__control[required]) {
+      & .form__control-label {
+        @apply after:content-['*'];
+      }
+    }
+
+    &:has(
+        .form__control[required][type='checkbox'],
+        .form__control[required][type='radio']
+      ) {
+      & .form__control-label {
+        @apply after:hidden;
+      }
+    }
+    &:has(.form__control-checkbox) {
+      & .form__control-label {
+        @apply flex w-fit cursor-pointer flex-col pl-25 text-xs;
+        &::before {
+          @apply absolute left-0 top-[50%] h-17 w-17 translate-y-[-50%] rounded transition-all duration-200 content-[''];
+          border: 0.0625em solid $input-border-color;
+          background-repeat: no-repeat;
+          background-size: 100%;
+        }
+
+        span {
+          @apply text-orange-500 underline underline-offset-4;
+        }
+      }
+    }
+  }
+
+  &__control-textarea {
+    @apply resize-none;
+  }
+
+  &__select {
+    @apply rounded-md py-8 pl-8 pr-20 text-base leading-[120%];
+    border: 0.0625em solid $input-border-color;
+
+    &-list {
+      @apply left-0;
+
+      &.choices__list--dropdown {
+        @apply overflow-y-auto border border-black;
+
+        // &::-webkit-scrollbar {
+        //   @apply w-2 bg-gray-200;
+        // }
+
+        // &::-webkit-scrollbar-thumb {
+        //   @apply w-full bg-gray-300;
+        // }
+      }
+    }
+    &-item {
+      @apply leading-[120%];
+
+      &-choice {
+        @apply border-b border-b-gray-300 p-8 text-base font-semibold leading-[140%] text-black last:border-b-0;
+      }
+    }
+    &-placeholder {
+      @apply font-normal text-gray-500;
+
+      &.choices__item--disabled {
+        @apply invisible fixed right-[-1000%] -z-50 w-full overflow-hidden opacity-0;
+      }
+    }
+  }
+
+  &__feedback {
+    &-invalid,
+    &-valid {
+      @apply hidden pl-10 text-sm;
+
+      &.show {
+        @apply block;
+      }
+    }
+    &-invalid {
+      @apply text-red-600;
+    }
+    &-valid {
+      @apply text-green-600;
+    }
+  }
+
+  &__footer {
+    @apply mt-12 flex content-between items-center;
+    & .button {
+      @apply rounded-md bg-orange-500 bg-opacity-80 px-21 py-5 text-lg font-semibold text-white transition-all duration-500 hover:bg-opacity-100;
+    }
+  }
+
+  &__response {
+    @apply hidden;
+
+    &-success,
+    &-error {
+      @apply hidden;
+    }
+  }
+
+  // Валидация на пустые поля возможностями браузера
+  & .form__control-box {
+    // .form__control_invalid
+    // .form__control_valid
+    &:has(.form__control_invalid:not([type='checkbox'], [type='radio'])) {
+      & .form__control {
+        @apply border border-[#DB0000] bg-[#FFDCDC];
+      }
+
+      & .form__control-label {
+        @apply bg-[#FFDCDC] text-black;
+      }
+
+      & .form__feedback-invalid {
+        @apply block;
+      }
+    }
+
+    &:has(
+        .form__control_invalid[type='checkbox'],
+        .form__control_invalid[type='radio']
+      ) {
+      & .form__control-label {
+        @apply before:border before:border-[#DB0000] before:bg-[#FFDCDC];
+      }
+    }
+  }
+}
+.choices {
+  margin: 0;
+}
+.choices__list--single {
+  padding: 0;
+}

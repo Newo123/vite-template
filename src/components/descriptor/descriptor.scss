@@ -1,0 +1,26 @@
+.descriptor {
+  @apply relative;
+  &__box {
+    @apply relative z-10 text-white;
+    background: linear-gradient(
+      0deg,
+      rgba(0, 0, 0, 0.8) 0,
+      rgba(0, 0, 0, 0) 100%
+    );
+  }
+  &__title {
+    @apply text-[2.25em];
+  }
+  &__description {
+    @apply mt-12 text-[1.12em];
+  }
+  &__image-box {
+    @apply absolute z-0 top-0 bottom-0 w-full overflow-hidden;
+  }
+  &__image {
+    @apply object-cover object-center h-full w-full;
+  }
+  &_popup {
+    @apply h-[100vh] max-h-250 flex flex-col justify-end;
+  }
+}

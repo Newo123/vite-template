@@ -1,0 +1,37 @@
+include ../libs/_libs
+block variables
+  - var title = 'Навигация по типовым решения Front-End';
+  - var bodyClass = ''
+
+include ../static/_head
+  main
+    section.menu-box
+      div.container
+        ul.menu.flex.flex-col.gap-10
+          .img
+          li.menu__item
+            span.menu__link.font-bold Шапка сайта
+              ul.submenu.pl-10.font-normal
+                li.submenu__item
+                  a.menu__link.submenu__link(href="/header/header.html") Шапка сайта Primary
+                li.submenu__item
+                  a.menu__link.submenu__link(href="/header/header-secondary.html") Шапка сайта Secondary
+          li.menu__item
+            span.menu__link.font-bold PUSH-UP
+              ul.submenu.pl-10.font-normal
+                li.submenu__item
+                  a.menu__link.submenu__link(href="/push-up/push-up.html") Push-up
+          li.menu__item
+            span.menu__link.font-bold POPUP
+              ul.submenu.pl-10.font-normal
+                li.submenu__item
+                  a.menu__link.submenu__link(href="/popups/popup-form.html") Форма PopUp
+                li.submenu__item
+                  a.menu__link.submenu__link(href="/popups/popup-text.html") Текстовый PopUp
+                li.submenu__item
+                  a.menu__link.submenu__link(href="/popups/popup-text-descriptor-form.html") Текстовый PopUp с дескриптором и формой
+          li.menu__item
+            span.menu__link.font-bold Новости
+              ul.submenu.pl-10.font-normal
+                li.submenu__item
+                  a.menu__link.submenu__item(href="/typography/typography.html") Внутренняя страница новости

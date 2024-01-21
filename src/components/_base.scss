@@ -1,0 +1,11 @@
+@for $i from 1 through 7 {
+  h#{$i},
+  .h#{$i} {
+    font-size: calc($title-mobile-fs-base + (7 - $i) * $title-mobile-fs-step);
+    @apply font-bold;
+    @screen md {
+      font-size: $title-fs-start - ($i - 1) * $title-fs-step;
+    }
+    line-height: 1.3em;
+  }
+}

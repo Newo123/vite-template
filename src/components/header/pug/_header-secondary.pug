@@ -1,0 +1,35 @@
+-
+  const nav = [
+    {
+      href: '#',
+      title: 'Home',
+    },
+    {
+      href: '#',
+      title: 'About',
+    },
+    {
+      href: '#',
+      title: 'Contacts',
+    },
+  ]
+
+
+
+header.header
+  .container.header__container
+    a(href="#" class="header__logo") ЕЩЕ НЕ ГОТОВ
+
+    nav.header__nav
+      ul.header__nav-list
+        each item in nav
+          li.header__nav-list-item
+            a(href=item.href) #{item.title}
+    .header__contacts
+      a(href="#").header__contacts-phone +7 (4832) 124-115
+      a(href="#").header__contacts-email email@example.com
+
+
+.block.block_first
+.block.block_second
+.block.block_third

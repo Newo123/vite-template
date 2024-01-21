@@ -1,0 +1,196 @@
+.typography {
+  &__container {
+    //font-size: 2rem;
+    @apply text-[1rem] 2xl:text-[1.125rem];
+
+    &_padding {
+      @apply py-20 md:py-25 lg:py-40;
+    }
+
+    * {
+      @apply mb-0;
+    }
+
+    a {
+      @apply no-underline font-semibold;
+      color: $typography-link-color;
+      border-bottom: 0.125rem $typography-link-color solid;
+    }
+
+    // h1-h6 styles
+    @for $i from 1 through 7 {
+      h#{$i} {
+        font-size: calc(
+          $title-mobile-fs-base + (7 - $i) * $title-mobile-fs-step
+        );
+        @apply font-bold;
+        @screen md {
+          font-size: $title-fs-start - ($i - 1) * $title-fs-step;
+        }
+        line-height: 1.3em;
+        @if $i < 3 {
+          margin-top: 1.4em;
+        } @else {
+          margin-top: 1.2em;
+        }
+      }
+    }
+
+    p,
+    ul,
+    ol,
+    tbody td {
+      font-size: 1em;
+      margin-top: 0.875em;
+      line-height: 1.625em;
+      color: $color-text-base;
+    }
+
+    ul,
+    ol {
+      padding-left: 1.875rem;
+      li {
+        margin-top: 0.5em;
+        line-height: 1.4em;
+        &:first-child {
+          margin-top: 0;
+        }
+      }
+    }
+
+    ul {
+      li {
+        list-style: disc;
+        &::marker {
+          color: $market-color;
+        }
+      }
+    }
+
+    ol {
+      li {
+        list-style: decimal;
+      }
+    }
+
+    @each $tag in $max-width-100 {
+      #{$tag} {
+        max-width: 100%;
+      }
+    }
+
+    @each $tag in $block-tags {
+      #{$tag} {
+        display: block;
+      }
+    }
+
+    @each $tag in $big-margin-top-tags {
+      #{$tag} {
+        margin-top: 2.25em;
+        margin-bottom: 2.25em;
+      }
+    }
+
+    @each $tag in $text-tags {
+      #{$tag} {
+        max-width: $box-text-size;
+        @screen 2xl {
+          max-width: $box-text-size-2xl;
+        }
+      }
+    }
+
+    table {
+      font-size: 1em;
+      thead {
+        background: $table-header-background-color;
+
+        td {
+          color: $table-header-color;
+          @apply font-semibold;
+        }
+      }
+
+      tr {
+        vertical-align: top;
+
+        td {
+          padding: 1em;
+          border: 0.0625em solid $table-border-color;
+
+          > *:first-child {
+            margin-top: 0;
+          }
+        }
+      }
+    }
+
+    > *:first-child {
+      margin-top: 0;
+    }
+
+    /* align all blocks in center by horizontal */
+    &_block-center {
+      > * {
+        margin-left: auto;
+        margin-right: auto;
+      }
+    }
+  }
+  figcaption {
+    margin-top: 0.625em;
+    font-size: 1em;
+
+    cite {
+      font-size: 0.875em;
+      display: flex;
+      @apply font-semibold;
+    }
+  }
+  &__table-box {
+    overflow: auto;
+  }
+}
+
+.figure_blockquote {
+  position: relative;
+  //padding-left: 6.875em;
+  line-height: 1.625;
+  color: $blockquote-color-base;
+
+  @apply md:pl-[6.875em];
+
+  &:before {
+    content: '\f10e';
+    font-family: 'Font Awesome 6 Free';
+    //position: absolute;
+    left: 0;
+    top: 0;
+    font-size: 4.5rem;
+    line-height: 1;
+    color: $blockquote-color-decorative;
+
+    @apply text-[3.0rem] md:absolute md:text-[4.5rem];
+  }
+
+  blockquote {
+    @apply max-md:mt-5 text-[1.125em];
+
+    > *:first-child {
+      margin-top: 0;
+    }
+
+    &::before {
+      position: absolute;
+      content: '';
+      height: 100%;
+      width: 0.1875em;
+      left: 5.375em;
+      top: 0;
+      background-color: $blockquote-color-decorative;
+
+      @apply max-md:hidden;
+    }
+  }
+}

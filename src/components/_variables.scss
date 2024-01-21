@@ -1,0 +1,88 @@
+// =========================== BASE VARIABLES ==========================
+
+$color-text-base: #212121;
+
+$transition-base: all 0.2s ease-in-out !default;
+$transition-fade: opacity 0.15s linear !default;
+$transition-collapse: height 0.35s ease !default;
+$transition-collapse-width: width 0.35s ease !default;
+
+$font-family: 'Montserrat', sans-serif;
+$title-font-family: 'Open Sans', sans-serif;
+
+// =====================================================================
+
+// ======================= components/typography =======================
+
+$table-header-background-color: #3a5b8c;
+$table-header-color: #fff;
+$table-border-color: rgb(59, 53, 53);
+$table-border-size: 0.125rem;
+$table-border-style: solid;
+
+$market-color: rgb(95, 95, 185);
+
+//$text-tags-center: false;
+$typography-link-color: red;
+
+$title-fs-start: 2.5em;
+$title-fs-step: 0.25em;
+$title-mobile-fs-base: 1.125rem;
+$title-mobile-fs-step: 0.375vw;
+
+$blockquote-color-base: $color-text-base;
+$blockquote-color-decorative: $table-header-background-color;
+
+$box-text-size: 58.5rem;
+$box-text-size-2xl: 65.875rem;
+
+$big-margin-top-tags: (
+  'p > img',
+  'pre',
+  'figure',
+  '> img',
+  '> table',
+  'iframe',
+  '.typography__table-box',
+  '> picture'
+);
+
+$max-width-100: ('img', 'iframe', 'ul', 'ol', 'picture');
+
+$block-tags: ('p > img', 'pre', 'figure', '> img', '> picture');
+
+$text-tags: (
+  '> h1',
+  '> h2',
+  '> h3',
+  '> h4',
+  '> h5',
+  '> h6',
+  '> p',
+  '> ul',
+  '> ol',
+  '> pre',
+  '> figure'
+);
+
+// =====================================================================
+
+// ======================= components/popups =======================
+
+$width-popup-box: (
+  sm: 38rem,
+  md: 48rem,
+  lg: 66rem,
+  xl: 88rem,
+);
+$padding-x-popup-container: (
+  sm: 1.5rem,
+  md: 2.5rem,
+  lg: 3.5rem,
+  xl: 4.5rem,
+);
+$padding-y-ratio: 0.714;
+$input-border-color: #adb5bd;
+$input-focus-label-color: #6c757d;
+
+// =====================================================================

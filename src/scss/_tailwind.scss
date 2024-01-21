@@ -1,0 +1,31 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+  .container {
+    @apply mx-auto px-6;
+
+    @screen xs {
+      @apply max-w-full;
+    }
+    @screen sm {
+      @apply max-w-full px-12;
+    }
+    @screen md {
+      @apply max-w-full;
+    }
+    @screen lg {
+      @apply max-w-[937px] px-0;
+    }
+    @screen xl {
+      @apply max-w-[1116px];
+    }
+    @screen 2xl {
+      @apply max-w-[1296px];
+    }
+    @screen 3xl {
+      @apply max-w-[81rem];
+    }
+  }
+}

@@ -1,0 +1,8 @@
+$maxWidth: 1920;
+
+@mixin adaptive-hero($property, $startSize, $minSize) {
+  $addSize: $startSize - $minSize;
+  #{$property}: calc(
+    #{$minSize + px} + #{$addSize} * ((100vw - 370px) / #{$maxWidth - 370})
+  );
+}

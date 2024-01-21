@@ -1,0 +1,27 @@
+include ../../../../components/popups/pug/_popup
+
++popup({
+  classes__box: [
+    'popup__box_lg'
+  ],
+  isClose: true
+})
+  //- +popup__header({})
+  //-   .popup__container
+  //-     h1.text-3xl Заголовок
+  +popup__body({
+    classes: [
+      'scrollbar',
+      'scrollbar_lg'
+    ]
+  })
+    .popup__container
+      .typography
+        .typography__container
+          include ../../../../components/typography/pug/static/html_example
+  //- +popup__footer({})
+  //-   .popup__container
+  //-     p здесь может быть текст или другая разметка
+
+
+

@@ -1,0 +1,40 @@
+mixin popup(property)
+  - let classes = property.classes || []
+  - let classes__box = property.classes__box || []
+  - let isClose = property.isClose
+
+  - classes = classes.join(' ')
+  - classes__box = classes__box.join(' ')
+
+  .popup.close(class=classes)
+    .popup__box(class=classes__box)
+      block
+    if isClose
+      .close
+
+mixin popup__header(property)
+  - let classes = property.classes || []
+
+  - classes = classes.join(' ')
+
+  if block
+    .popup__header(class=classes)
+      block
+
+mixin popup__body(property)
+  - let classes = property.classes || []
+
+  - classes = classes.join(' ')
+
+  if block
+    .popup__body(class=classes)
+      block
+
+mixin popup__footer(property)
+  - let classes = property.classes || []
+
+  - classes = classes.join(' ')
+
+  if block
+    .popup__footer(class=classes)
+      block

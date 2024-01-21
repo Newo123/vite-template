@@ -1,0 +1,147 @@
+include ../../../../components/forms/pug/_form
+include ../../../../components/popups/pug/_popup
+
+block variables
+  -
+    var selectsValues = [
+      {
+        id: 'service3',
+        name: 'service3',
+        type: 'select',
+        maxcount: '6',
+        required: true,
+        valid: 'valid',
+        invalid: 'Услуга не выбрана, выберите услугу из выпадающего списка.',
+        labelValue: 'Выбранная услуга',
+        options: [ 
+          {
+            value: '',
+            text: 'Выберите услугу из списка',
+            selected: true,
+            disabled: true,
+          },
+          {
+            value: 'Bussines',
+            text: 'Бизнес услуга',
+            selected: false,
+            disabled: false
+          },
+          {
+            value: 'Bussines',
+            text: 'Бизнес услуга',
+            selected: false,
+            disabled: false
+          },
+          {
+            value: 'Bussines',
+            text: 'Бизнес услуга',
+            selected: false,
+            disabled: false
+          },
+          
+        ],
+      },
+    ]
+
+
++popup({isClose: true, classes__box: ['popup__box_lg']})
+    +popup__body({classes: ['scrollbar', 'scrollbar_lg']})
+      .descriptor.descriptor_popup
+        .descriptor__image-box
+            picture
+                source(srcset="https://r-band.ru/image/pages/79/image%203.jpg", media="(max-width: 600px)")
+                img.descriptor__image(src='https://grodno.in/source/photos/2017/04/06/chernogoriya11.jpg')
+        .descriptor__box.popup__container
+            h5.descriptor__title Электротехническое строительство, может быть длинный заголовок
+            p.descriptor__description Краткое описание в дескрипторе. Краткое описание в дескрипторе. Краткое описание в дескрипторе. Краткое описание в дескрипторе.
+      +form({
+        name: 'callback',
+        classes: [
+          'popup__container',
+          'bg-gray-200'
+          ],
+      })(data-send="", data-hash="", data-method="POST")
+        +form__header({})
+          h3.form__title Обратный звонок
+          p.form__description Заполните форму ниже и мы свяжемся с Вами в ближайшее время.
+        +form__body({})
+          //- //- Обычные ипут поля
+          .form__row.columns-2.gap-13
+            +form__control-box({type: 'text', id: 'name', name: 'name', placeholder: 'Укажите свое имя', labelValue: 'Ваше имя', invalid: 'Введите своё имя', valid: 'Valid'})(required)
+            +form__control-box({type: 'tel', id: 'phone', name: 'phone', placeholder: '+7 (___) ___-__-__', labelValue: 'Номер телефона', invalid: 'Неправильно введён номер', valid: 'Valid'})(required, data-mask="+{7} (000) 000-00-00")
+          //- Select
+          .form__row
+            //- Textarea
+            +form__control-box({type: 'textarea', id: 'message', name: 'message', placeholder: 'Опишите Ваш вопрос или просьбу и удобное время для связи.', labelValue: 'Комментарий'})(rows="4")
+        +form__footer({})
+          //- Checkbox
+          +form__control-box({type: 'checkbox', id: 'checked', name: 'checked', labelValue: 'Я ознакомлен и согласен с'})(required)
+            span(data-popup="") правилами
+          button(class='button' type='submit') Отправить
+        +form__response({})
+          .form__response-error
+            .form__response-img
+              img(src='' alt='error')
+            h3.form__response-title Заголовок
+            p.form__response-description Описание
+            button(class="form__response-button") кнопка назад
+          .form__response-success
+            .form__response-img
+              img(src='' alt='success')
+            h3.form__response-title Заголовок
+            p.form__response-description Описание
+      .popup__container
+        .typography
+          .typography__container
+            include ../../../../components/typography/pug/static/html_example
+      +form({
+        name: 'callback',
+        classes: [
+          'popup__container',
+          'bg-gray-200'
+          ],
+      })(data-send="", data-hash="", data-method="POST")
+        +form__header({})
+          h3.form__title Обратный звонок
+          p.form__description Заполните форму ниже и мы свяжемся с Вами в ближайшее время.
+        +form__body({})
+          //- //- Обычные ипут поля
+          .form__row.columns-2.gap-13
+            .w-full
+              .form__row
+                +form__control-box({type: 'text', id: 'name2', name: 'name', placeholder: 'Укажите свое имя', labelValue: 'Ваше имя', invalid: 'Введите своё имя', valid: 'Valid'})(required)
+              .form__row
+                +form__control-box({type: 'tel', id: 'phone2', name: 'phone', placeholder: '+7 (___) ___-__-__', labelValue: 'Номер телефона', invalid: 'Неправильно введён номер', valid: 'Valid'})(required, data-mask="+{7} (000) 000-00-00")
+              .form__row
+                each select in selectsValues
+                  +form__control-box({type: select.type, id: select.id, name: select.name, required: select.required, maxcount: select.maxcount, labelValue: select.labelValue, invalid: select.invalid, valid: select.valid, valid: select.valid})
+                    each option in select.options
+                      option(value=option.value selected=option.selected disabled=option.disabled style=`display: ${option.display}`) #{option.text}
+            .w-full
+              //- Select
+              .form__row
+                //- Textarea
+                +form__control-box({type: 'textarea', id: 'message2', name: 'message', placeholder: 'Опишите Ваш вопрос или просьбу и удобное время для связи.', labelValue: 'Комментарий'})(rows="4",class="h-full")
+        +form__footer({})
+          //- Checkbox
+          +form__control-box({type: 'checkbox', id: 'checked2', name: 'checked2', labelValue: 'Я ознакомлен и согласен с'})(required)
+            span(data-popup="") правилами
+          button(class='button' type='submit') Отправить
+        +form__response({})
+          .form__response-error
+            .form__response-img
+              img(src='' alt='error')
+            h3.form__response-title Заголовок
+            p.form__response-description Описание
+            button(class="form__response-button") кнопка назад
+          .form__response-success
+            .form__response-img
+              img(src='' alt='success')
+            h3.form__response-title Заголовок
+            p.form__response-description Описание
+    //- .popup__footer
+    //-   .popup__container
+    //-     p здесь может быть текст или другая разметка
+
+
+

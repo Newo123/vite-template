@@ -1,0 +1,108 @@
+mixin form__control-box(property)
+  if property.type
+    .form__control-box
+      if property.type == 'textarea'
+        textarea(class="form__control form__control-textarea" id=property.id name=property.name placeholder="Опишите Ваш вопрос или просьбу и удобное время для связи.")&attributes(attributes)
+      else if property.type == 'select'
+          select(id=property.id name=property.name class="form__control form__control-select" required=property.required data-maxcount=property.maxcount)
+            if block
+              block
+            else
+              option(selected disabled value="") Список пуст
+      else if property.type == 'checkbox'
+        input(type=property.type id=property.id name=property.name class="form__control form__control-checkbox")&attributes(attributes)
+      else if property.type == 'radio'
+        input(type=property.type id=property.id name=property.name class="form__control form__control-radio")&attributes(attributes)
+      else
+        input(type=property.type id=property.id name=property.name class="form__control form__control-input" placeholder=property.placeholder)&attributes(attributes)
+      if property.labelValue
+        if block && (property.type === 'checkbox' || property.type === 'radio')
+          label(for=property.id class="form__control-label")= property.labelValue 
+            block
+        else
+          label(for=property.id class="form__control-label")= property.labelValue
+
+      if property.invalid
+        div(data-default=property.invalid).form__feedback-invalid= property.invalid
+      if property.valid
+        div(data-default=property.valid).form__feedback-valid= property.valid
+
+mixin form__header(property)
+  - let classes = property.classes || []
+
+  if Array.isArray(property.classes)
+    - classes = property.classes.join(' ')
+
+  .form__header(class=classes)
+      block
+
+mixin form__footer(property)
+  - let classes = property.classes || []
+
+  if Array.isArray(property.classes)
+    - classes = property.classes.join(' ')
+
+  .form__footer(class=classes)
+    block
+
+mixin form__body(property)
+  - let classes = property.classes || []
+
+  if Array.isArray(property.classes)
+    - classes = property.classes.join(' ')
+
+  .form__body(class=classes)
+    block
+
+mixin form__response(property)
+  - let classes = property.classes || []
+
+  if Array.isArray(property.classes)
+    - classes = property.classes.join(' ')
+
+  .form__response(class=classes)
+    block
+
+mixin form(property)
+  - let classes = property.classes || []
+  - let name = property.name || ''
+
+  if name
+    - classes.push('form_' + name)
+
+  - classes = classes.join(' ')
+
+
+  //- Если метод определен атрибутом JS/TS использует его, если не определен то используем POST
+  form.form(class=classes name=name)&attributes(attributes)
+    block
+    //- //- Обычные ипут поля
+    //- +form__control-box({type: 'text', id: 'name', name: 'name', placeholder: 'Укажите свое имя', labelValue: 'Ваше имя', invalid: 'Введите своё имя', valid: 'Valid'})(required)
+    //- +form__control-box({type: 'tel', id: 'phone', name: 'phone', placeholder: '+7 (___) ___-__-__', labelValue: 'Номер телефона', invalid: 'Неправильно введён номер', valid: 'Valid'})(required)
+    //- +form__control-box({type: 'email', id: 'email', name: 'email', placeholder: 'Укажите свой Email', labelValue: 'Email', invalid: 'Неправильно введён email', valid: 'Valid'})
+    //- //- Select
+    //- each select in selectsValues
+    //-   +form__control-box({type: select.type, id: select.id, name: select.name, required: select.required, maxcount: select.maxcount, labelValue: select.labelValue, invalid: select.invalid, valid: select.valid, valid: select.valid})
+    //-     each option in select.options
+    //-       option(value=option.value selected=option.selected disabled=option.disabled style=`display: ${option.display}`) #{option.text}
+    //- //- Textarea
+    //- +form__control-box({type: 'textarea', id: 'message', name: 'message', placeholder: 'Опишите Ваш вопрос или просьбу и удобное время для связи.', labelValue: 'Комментарий'})(rows="5")
+      footer.html
+    //- //- Checkbox
+    //- +form__control-box({type: 'checkbox', id: 'checked', name: 'checked', labelValue: 'Я ознакомлен и согласен с'})(required)
+    //-   span(data-popup="") правилами
+    //- button(class='button' type='submit') Отправить
+    //- .form__response
+    //-   .form__response-error
+    //-     .form__response-img
+    //-       img(src='' alt='error')
+    //-     h3.form__response-title Заголовок
+    //-     p.form__response-description Описание
+    //-     button(class="form__response-button") кнопка назад
+    //-   .form__response-success
+    //-     .form__response-img
+    //-       img(src='' alt='success')
+    //-     h3.form__response-title Заголовок
+    //-     p.form__response-description Описание
+
+//- mixin control-select()

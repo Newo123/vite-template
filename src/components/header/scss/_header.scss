@@ -1,0 +1,44 @@
+// При разработке проекта нужно удалить стили селектора .block
+.block {
+  @apply min-h-screen;
+
+  &_first {
+    @apply bg-red-200;
+  }
+  &_second {
+    @apply bg-green-200;
+  }
+  &_third {
+    @apply bg-gray-200;
+  }
+}
+
+.fixed-header {
+  & .header {
+    @apply -translate-y-[110%] bg-yellow-200; // Исправлять внимательно, от некоторых стилей зависит работа скрытие и видимость шапки
+    &.show {
+      @apply translate-y-0; // Исправлять внимательно, от некоторых стилей зависит работа скрытие и видимость шапки
+    }
+  }
+}
+
+.header {
+  @apply py-[30px] fixed top-0 left-0 w-full transition-all duration-500; // Исправлять внимательно, от некоторых стилей зависит работа скрытие и видимость шапки
+
+  @screen 3xl {
+    padding: rem(16, 30) 0;
+  }
+
+  &__container {
+    @apply flex items-center justify-between;
+  }
+
+  &__nav {
+    &-list {
+      @apply flex items-center gap-[20px];
+      @screen 3xl {
+        gap: rem(16, 20);
+      }
+    }
+  }
+}

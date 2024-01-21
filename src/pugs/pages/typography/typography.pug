@@ -1,0 +1,11 @@
+include ../../libs/_libs
+block variables
+    - var title = 'Внутренняя страница новости'
+    - var bodyClass = 'scrollbar scrollbar_medium'
+
+include ../../static/_head
+  main
+    section.typography
+      .container.typography__container.typography__container_block-center.typography__container_padding
+        include ../../../components/typography/pug/static/html_example
+          
